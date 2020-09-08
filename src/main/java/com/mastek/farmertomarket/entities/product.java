@@ -15,7 +15,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Entity 												// declares the class as entity, to be managed by JPA
 @Table(name="product")
 public class product {
-
+ 
 	@Id												    // Marking the property as primary key for the table 
 	@Column(name="productID")							// using column to provide the default column name
 	@GeneratedValue(strategy=GenerationType.AUTO)
