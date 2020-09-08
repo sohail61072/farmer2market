@@ -9,7 +9,6 @@ import com.mastek.farmertomarket.apis.checkoutAPI;
 import com.mastek.farmertomarket.apis.customerAPI;
 import com.mastek.farmertomarket.apis.farmerAPI;
 import com.mastek.farmertomarket.apis.itemAPI;
-import com.mastek.farmertomarket.apis.orderAPI;
 import com.mastek.farmertomarket.apis.productAPI;
 import com.mastek.farmertomarket.apis.transactionAPI;
 import com.mastek.farmertomarket.dao.basketJPADAO;
@@ -17,7 +16,6 @@ import com.mastek.farmertomarket.dao.checkoutJPADAO;
 import com.mastek.farmertomarket.dao.customerJPADAO;
 import com.mastek.farmertomarket.dao.farmerJPADAO;
 import com.mastek.farmertomarket.dao.itemJPADAO;
-import com.mastek.farmertomarket.dao.orderJPADAO;
 import com.mastek.farmertomarket.dao.productJPADAO;
 import com.mastek.farmertomarket.dao.transactionJPADAO;
 import com.mastek.farmertomarket.entities.basket;
@@ -25,14 +23,13 @@ import com.mastek.farmertomarket.entities.checkout;
 import com.mastek.farmertomarket.entities.customer;
 import com.mastek.farmertomarket.entities.farmer;
 import com.mastek.farmertomarket.entities.item;
-import com.mastek.farmertomarket.entities.order;
 import com.mastek.farmertomarket.entities.product;
 import com.mastek.farmertomarket.entities.transaction;
 
 
 @Component									 // marking class as bean to be created
 @Scope("singleton")	// singleton: One object used across test cases, prototype: one object per request
-public class farmertomarketService implements basketAPI, checkoutAPI, customerAPI, farmerAPI, itemAPI, orderAPI, productAPI, transactionAPI{
+public class farmertomarketService implements basketAPI, checkoutAPI, customerAPI, farmerAPI, itemAPI, productAPI, transactionAPI{
 
 @Autowired
 basketJPADAO baskDAO;
@@ -48,9 +45,6 @@ farmerJPADAO farmDAO;
 
 @Autowired
 itemJPADAO itemDAO;
-
-@Autowired
-orderJPADAO ordDAO;
 
 @Autowired
 productJPADAO prodDAO;
@@ -93,24 +87,6 @@ public product findProductID(int productID) {
 public product registerNewProduct(product newProduct) {
 	// TODO Auto-generated method stub
 	return newProduct;
-}
-
-@Override
-public Iterable<order> listAllOrders() {
-	// TODO Auto-generated method stub
-	return ordDAO.findAll();
-}
-
-@Override
-public order findOrderID(int orderID) {
-	// TODO Auto-generated method stub
-	return ordDAO.findById(orderID).get();
-}
-
-@Override
-public order registerNewOrder(order newOrder) {
-	// TODO Auto-generated method stub
-	return newOrder;
 }
 
 @Override
