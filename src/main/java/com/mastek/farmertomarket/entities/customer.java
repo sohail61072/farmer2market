@@ -14,11 +14,9 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Table(name="customer")
 public class customer {
 	
-	
 	@Id												    // Marking the property as primary key for the table 
 	@Column(name="customerID")							// using column to provide the default column name
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	
 	
 
 	@FormParam("customerID")
