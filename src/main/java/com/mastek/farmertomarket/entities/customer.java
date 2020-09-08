@@ -20,13 +20,6 @@ public class customer {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	
 	
-	@Override
-	public String toString() {
-		return "customer [customerID=" + customerID + ", customerForename=" + customerForename + ", customerSurname="
-				+ customerSurname + ", customerAddress=" + customerAddress + ", customerBalance=" + customerBalance
-				+ ", customerDOB=" + customerDOB + ", customerUsername=" + customerUsername + ", customerPassword="
-				+ customerPassword + "]";
-	}
 
 	@FormParam("customerID")
 	int customerID;
@@ -114,6 +107,14 @@ public class customer {
 
 	public void setCustomerPassword(String customerPassword) {
 		this.customerPassword = customerPassword;
+	}
+
+	@Override
+	public String toString() {
+		return "customer [customerID=" + customerID + ", customerForename=" + customerForename + ", customerSurname="
+				+ customerSurname + ", customerAddress=" + customerAddress + ", customerBalance=" + customerBalance
+				+ ", customerDOB=" + customerDOB + ", customerUsername=" + customerUsername + ", customerPassword="
+				+ customerPassword + "]";
 	}
 	
 	
