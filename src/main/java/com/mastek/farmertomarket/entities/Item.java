@@ -11,13 +11,10 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement
 @Entity 												// declares the class as entity, to be managed by JPA
-@Table(name="item")
-public class item {
+@Table(name="ftom_item")
+public class Item {
 	
-	@Id												    // Marking the property as primary key for the table 
-	@Column(name="itemID")							// using column to provide the default column name
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	
+		
 	@FormParam("itemID")
 	int itemID;
 	
@@ -30,7 +27,9 @@ public class item {
 	@FormParam("itemPrice")
 	double itemPrice;
 	
-	
+	@Id												    // Marking the property as primary key for the table 
+	@Column(name="itemID")							// using column to provide the default column name
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	public int getItemID() {
 		return itemID;
 	}

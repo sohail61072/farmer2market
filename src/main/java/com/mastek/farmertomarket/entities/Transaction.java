@@ -11,12 +11,9 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement
 @Entity 												// declares the class as entity, to be managed by JPA
-@Table(name="transaction")
-public class transaction {
+@Table(name="ftom_transaction")
+public class Transaction {
 	
-	@Id												    // Marking the property as primary key for the table 
-	@Column(name="transactionID")							// using column to provide the default column name
-	@GeneratedValue(strategy=GenerationType.AUTO)
 	
 	@FormParam("transactionID")
 	int transactionID;
@@ -27,6 +24,9 @@ public class transaction {
 	@FormParam("transactionAmount")
 	double transactionAmount;
 
+	@Id												    // Marking the property as primary key for the table 
+	@Column(name="transactionID")							// using column to provide the default column name
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	public int getTransactionID() {
 		return transactionID;
 	}

@@ -3,7 +3,8 @@ package com.mastek.farmertomarket.apis;
 import org.glassfish.jersey.server.ResourceConfig;
 import org.springframework.stereotype.Component;
 
-import com.mastek.farmertomarket.services.farmertomarketService;
+import com.mastek.farmertomarket.services.FarmerToMarketService;
+
 
 
 @Component // declare it as spring component
@@ -15,7 +16,7 @@ public class APIConfig  extends ResourceConfig{
 		public APIConfig() {
 			//register each service class to enable services as API
 		
-		register(farmertomarketService.class);
+		register(FarmerToMarketService.class);
 		register(CORSFilter.class);
 		//enable the CORS filter for UI applications to access the service
 		}

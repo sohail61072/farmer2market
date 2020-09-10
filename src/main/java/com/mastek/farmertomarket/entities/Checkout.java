@@ -11,14 +11,10 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement
 @Entity 												// declares the class as entity, to be managed by JPA
-@Table(name="checkout")
-public class checkout {
+@Table(name="ftom_checkout")
+public class Checkout {
 
-	@Id												    // Marking the property as primary key for the table 
-	@Column(name="checkoutID")							// using column to provide the default column name
-	@GeneratedValue(strategy=GenerationType.AUTO)
 	
-	@FormParam("checkoutID")
 	int checkoutID;
 	
 	@FormParam("deliveryDate")
@@ -26,7 +22,11 @@ public class checkout {
 	
 	@FormParam("totalCost")
 	double totalCost;
-
+	
+	@Id												    // Marking the property as primary key for the table 
+	@Column(name="checkoutID")							// using column to provide the default column name
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	@FormParam("checkoutID")
 	public int getCheckoutID() {
 		return checkoutID;
 	}

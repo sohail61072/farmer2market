@@ -13,8 +13,8 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement
 @Entity 												// declares the class as entity, to be managed by JPA
-@Table(name="farmer")	
-public class farmer {
+@Table(name="ftom_farmer")	
+public class Farmer {
 	
 	@FormParam("farmerID")
 	int farmerID;
@@ -32,7 +32,7 @@ public class farmer {
 	String farmName;
 	
 	@FormParam("farmType")
-	farmType farmType;
+	FarmType FarmType;
 	
 	@FormParam("farmerUsername")
 	String farmerUsername;
@@ -85,12 +85,12 @@ public class farmer {
 	}
 
 	@Enumerated(EnumType.STRING)
-	public farmType getFarmType() {
-		return farmType;
+	public FarmType getFarmType() {
+		return FarmType;
 	}
 
-	public void setFarmType(farmType farmType) {
-		this.farmType = farmType;
+	public void setFarmType(FarmType farmType) {
+		this.FarmType = farmType;
 	}
 
 	public String getFarmerUsername() {
@@ -112,7 +112,7 @@ public class farmer {
 	@Override
 	public String toString() {
 		return "farmer [farmerID=" + farmerID + ", farmLocation=" + farmLocation + ", farmerForename=" + farmerForename
-				+ ", farmerSurname=" + farmerSurname + ", farmName=" + farmName + ", farmType=" + farmType
+				+ ", farmerSurname=" + farmerSurname + ", farmName=" + farmName + ", farmType=" + FarmType
 				+ ", farmerUsername=" + farmerUsername + ", farmerPassword=" + farmerPassword + "]";
 	}
 	

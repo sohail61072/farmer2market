@@ -9,28 +9,25 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
-import com.mastek.farmertomarket.entities.basket;
+import com.mastek.farmertomarket.entities.Checkout;
 
 @Path("/farmertomarket/")
-public interface basketAPI {
+public interface CheckoutAPI {
 
 	@GET
-	@Path("/basket/list")
+	@Path("/checkout/list")
 	@Produces({MediaType.APPLICATION_JSON,MediaType.APPLICATION_XML}) // formats which the method supports
-	public Iterable<basket> listAllBaskets();
+	public Iterable<Checkout> listAllCheckouts();
 	
 	@GET //http method
-	@Path("/basket/find/{basketID}") //url with parameter format
+	@Path("/checkout/find/{checkoutID}") //url with parameter format
 	@Produces({MediaType.APPLICATION_JSON})
-	public basket findBasketID(@PathParam("basketID") int basketID);
+	public Checkout findCheckoutID(@PathParam("checkoutID") int checkoutID);
 
 	@POST // http method Post used to send data in requests
-	@Path("/basket/register")
+	@Path("/checkout/register")
 	@Consumes(MediaType.APPLICATION_FORM_URLENCODED)
 	@Produces(MediaType.APPLICATION_JSON)
-	public basket registerNewBasket(@BeanParam basket newBasket);
-	
-	
-	
-	
+	public Checkout registerNewCheckout(@BeanParam Checkout newCheckout);
+
 }

@@ -13,12 +13,10 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement
 @Entity 												// declares the class as entity, to be managed by JPA
-@Table(name="product")
-public class product {
+@Table(name="ftom_product")
+public class Product {
  
-	@Id												    // Marking the property as primary key for the table 
-	@Column(name="productID")							// using column to provide the default column name
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	
 	
 	@FormParam("productID")
 	int productID;
@@ -27,7 +25,7 @@ public class product {
 	String productName;
 	
 	@FormParam("productType")
-	productType productType;
+	ProductType productType;
 	
 	@FormParam("productDescription")
 	String productDescription;
@@ -41,6 +39,9 @@ public class product {
 	@FormParam("productWeightKG")
 	double productWeightKG;
 
+	@Id												    // Marking the property as primary key for the table 
+	@Column(name="productID")							// using column to provide the default column name
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	public int getProductID() {
 		return productID;
 	}
@@ -58,11 +59,11 @@ public class product {
 	}
 
 	@Enumerated(EnumType.STRING)
-	public productType getProductType() {
+	public ProductType getProductType() {
 		return productType;
 	}
 
-	public void setProductType(productType productType) {
+	public void setProductType(ProductType productType) {
 		this.productType = productType;
 	}
 

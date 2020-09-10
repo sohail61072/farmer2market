@@ -1,6 +1,6 @@
 package com.mastek.farmertomarket.entities;
 
-public enum farmType {ARABLE, PASTORAL, MIXED
+public enum FarmType {ARABLE, PASTORAL, MIXED
 
 }
 
