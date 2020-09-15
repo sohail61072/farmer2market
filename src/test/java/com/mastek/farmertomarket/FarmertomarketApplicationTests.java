@@ -1,5 +1,7 @@
 package com.mastek.farmertomarket;
 
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -19,6 +21,7 @@ import com.mastek.farmertomarket.entities.Item;
 import com.mastek.farmertomarket.entities.Product;
 import com.mastek.farmertomarket.entities.ProductType;
 import com.mastek.farmertomarket.entities.Transaction;
+import com.mastek.farmertomarket.services.FarmerToMarketService;
 
 //Initialize the JUnit Test with Spring Boot Application Environment
 //Spring Boot Test: used to test Spring APplicationContext 
@@ -46,6 +49,9 @@ class FarmertomarketApplicationTests {
 	
 	@Autowired
 	TransactionJPADAO tranDAO;
+	
+	@Autowired
+	FarmerToMarketService ftomSvc;
 	
 	@Test
 	void testCheckoutDAOAdd() {
@@ -114,7 +120,28 @@ class FarmertomarketApplicationTests {
 		
 		tran = tranDAO.save(tran);
 	}
-
+	
+	@Test
+	void testAssignCheckoutToCustomer() {
+		 ftomSvc.assignCustomerToCheckout(3, 5);
+		//assertNotNull(cust.getCurrentCheckout(), "Checkout Not Assigned");
+		
+		 
+		System.out.println("Checkout assigned to customer");
+	}
+//	@Test
+//	void testAssignEmployeeToDepartment() {
+//						// empSVC.assingEmployeeToDepartment(empno,deptno)
+//			Employee emp = empSvc.assignEmployeeToDepartment(6,12);
+//			assertNotNull(emp.getCurrentDepartment(),"Department Not Assigned");
+//	}
+//	
+//	
+//	@Test
+//	void testAssignEmployeeToProject() {		// empno,projectId
+//		Employee emp =  empSvc.assignEmployeeToProject(4,19);
+//		assertTrue(emp.getProjectsAssigned().size()>0,"Projects assigned");	
+//	}
 	}
 	
 	

@@ -1,5 +1,7 @@
 package com.mastek.farmertomarket.services;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
@@ -180,6 +182,24 @@ public Iterable<Farmer> listAllFarmers() {
 public Farmer findFarmerID(int farmerID) {
 	
 	return farmDAO.findById(farmerID).get();
+}
+@Transactional
+public Customer assignCustomerToCheckout(int checkoutID, int customerID) {
+	// TODO Auto-generated method stub
+	
+	Checkout check = checkDAO.findById(checkoutID).get();
+	Customer cust = custDAO.findById(customerID).get();
+	
+	check.setCustomer(cust);
+	cust.setCheckout(check);
+	
+	check = checkDAO.save(check);
+	cust = custDAO.save(cust);
+	
+	return cust;
+	
+	
+	
 }
 
 

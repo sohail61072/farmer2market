@@ -136,6 +136,11 @@ public class Customer {
 				+ ", customerDOB=" + customerDOB + ", customerUsername=" + customerUsername + ", customerPassword="
 				+ customerPassword + "]";
 	}
+
+	public Checkout setCheckout(Checkout check) {
+		// TODO Auto-generated method stub
+		return check;
+	}
 	
 	
 	

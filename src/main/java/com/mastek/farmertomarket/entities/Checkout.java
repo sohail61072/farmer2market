@@ -95,6 +95,13 @@ public class Checkout {
 		return "checkout [checkoutID=" + checkoutID + ", deliveryDate=" + deliveryDate + ", totalCost=" + totalCost
 				+ "]";
 	}
+
+	public Customer setCustomer(Customer cust) {
+		// TODO Auto-generated method stub
+		
+	return cust;
+	}
+
 	
 	
 }
