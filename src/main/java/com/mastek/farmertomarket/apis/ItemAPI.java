@@ -29,7 +29,7 @@ public interface ItemAPI {
 	@Path("/item/register")
 	@Consumes(MediaType.APPLICATION_FORM_URLENCODED)
 	@Produces(MediaType.APPLICATION_JSON)
-	public Item registerNewBasket(@BeanParam Item newItem);
+	public Item registerNewItem(@BeanParam Item newItem);
 }
 
 

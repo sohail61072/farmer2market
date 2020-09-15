@@ -67,7 +67,7 @@ public Transaction findTransactionID(int transactionID) {
 
 @Override
 public Transaction registerNewTransaction(Transaction newTransaction) {
-	newTransaction = tranDAO.save(findTransactionID(0));
+	newTransaction = tranDAO.save(newTransaction);
 	return newTransaction;
 }
 
@@ -85,7 +85,7 @@ public Product findProductID(int productID) {
 
 @Override
 public Product registerNewProduct(Product newProduct) {
-	// TODO Auto-generated method stub
+	newProduct=prodDAO.save(newProduct);
 	return newProduct;
 }
 
@@ -102,8 +102,8 @@ public Item finditemID(int itemID) {
 }
 
 @Override
-public Item registerNewBasket(Item newItem) {
-	// TODO Auto-generated method stub
+public Item registerNewItem(Item newItem) {
+	newItem = itemDAO.save(newItem);
 	return newItem;
 }
 
@@ -124,6 +124,7 @@ public Customer findCustomerID(int customerID) {
 
 @Override
 public Customer registerNewCustomer(Customer newCustomer) {
+	newCustomer = custDAO.save(newCustomer);
 	return newCustomer;
 }
 
@@ -141,7 +142,7 @@ public Checkout findCheckoutID(int checkoutID) {
 
 @Override
 public Checkout registerNewCheckout(Checkout newCheckout) {
-	// TODO Auto-generated method stub
+	newCheckout = checkDAO.save(newCheckout);
 	return newCheckout;
 }
 
@@ -159,26 +160,26 @@ public Basket findBasketID(int basketID) {
 
 @Override
 public Basket registerNewBasket(Basket newBasket) {
-	// TODO Auto-generated method stub
+	newBasket = baskDAO.save(newBasket);
 	return newBasket;
 }
 
 @Override
 public Farmer registerNewFarmer(Farmer newFarmer) {
-	// TODO Auto-generated method stub
-	return null;
+	newFarmer = farmDAO.save(newFarmer);
+	return newFarmer;
 }
 
 @Override
 public Iterable<Farmer> listAllFarmers() {
-	// TODO Auto-generated method stub
-	return null;
+	
+	return farmDAO.findAll();
 }
 
 @Override
 public Farmer findFarmerID(int farmerID) {
-	// TODO Auto-generated method stub
-	return null;
+	
+	return farmDAO.findById(farmerID).get();
 }
 
 
