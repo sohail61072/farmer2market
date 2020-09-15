@@ -1,5 +1,9 @@
 package com.mastek.farmertomarket.entities;
 
+import java.util.HashSet;
+import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -7,9 +11,15 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import javax.ws.rs.FormParam;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
+
+import org.springframework.data.annotation.Transient;
 
 @XmlRootElement
 @Entity 												// declares the class as entity, to be managed by JPA
@@ -39,6 +49,23 @@ public class Farmer {
 	
 	@FormParam("farmerPassword")
 	String farmerPassword;
+
+	Set<Product> productsAssigned = new HashSet<>();
+	
+	@ManyToMany(cascade=CascadeType.ALL) // configure many to many association for entities
+	@JoinTable(name="ftom_Farmer_Products",  // provide the join table name
+			joinColumns= {@JoinColumn(name="fk_farmerID")}, 
+			inverseJoinColumns = {@JoinColumn(name="fk_productId")} // foreign key column for collection type
+			)
+	@Transient // ignore this property when storing employee data in MongoDB
+	@XmlTransient // ignore the association property when shared via Service
+	public Set<Product> getProductsAssigned() {
+		return productsAssigned;
+	}
+
+	public void setProductsAssigned(Set<Product> productsAssigned) {
+		this.productsAssigned = productsAssigned;
+	}
 
 	
 	@Id												    // Marking the property as primary key for the table 

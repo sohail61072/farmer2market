@@ -5,9 +5,14 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.ws.rs.FormParam;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
+
+import org.springframework.data.annotation.Transient;
 
 @XmlRootElement
 @Entity 												// declares the class as entity, to be managed by JPA
@@ -40,6 +45,22 @@ public class Customer {
 	
 	@FormParam("customerPassword")
 	String customerPassword;
+
+	Checkout currentCheckout;
+	
+	
+	@ManyToOne //one customer can have multiple checkouts 
+	@JoinColumn(name="fk_checkoutID")  //the foreign key column to store the associate checkoutID
+	@Transient // ignore this property when storing employee data in MongoDB
+	@XmlTransient // ignore the association property when shared via Service
+	
+	public Checkout getCurrentCheckout() {
+		return currentCheckout;
+	}
+
+	public void setCurrentCheckout(Checkout currentCheckout) {
+		this.currentCheckout = currentCheckout;
+	}
 
 	@Id												    // Marking the property as primary key for the table 
 	@Column(name="customerID")							// using column to provide the default column name

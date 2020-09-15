@@ -1,5 +1,8 @@
 package com.mastek.farmertomarket.entities;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -7,9 +10,12 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.ws.rs.FormParam;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 @XmlRootElement
 @Entity 												// declares the class as entity, to be managed by JPA
@@ -38,6 +44,32 @@ public class Product {
 	
 	@FormParam("productWeightKG")
 	double productWeightKG;
+	
+	Item Item;
+	@OneToOne(mappedBy="product")
+	@XmlTransient
+	public Item getItem() {
+		return Item;
+	}
+
+	public void setItem(Item item) {
+		this.Item = item;
+	}
+
+	Set<Farmer> farmerProducts=  new HashSet<>();
+
+
+	// Provide the property in Farmer with @ManyToMany and @JoinTable Configuration
+	@ManyToMany(mappedBy="productsAssigned")
+	@XmlTransient
+	public Set<Farmer> getFarmerProducts() {
+		return farmerProducts;
+	}
+
+	public void setFarmerProducts(Set<Farmer> farmerProducts) {
+		this.farmerProducts = farmerProducts;
+	}
+	
 
 	@Id												    // Marking the property as primary key for the table 
 	@Column(name="productID")							// using column to provide the default column name

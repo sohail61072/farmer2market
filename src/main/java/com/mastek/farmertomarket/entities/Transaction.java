@@ -5,9 +5,11 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.ws.rs.FormParam;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 @XmlRootElement
 @Entity 												// declares the class as entity, to be managed by JPA
@@ -24,6 +26,18 @@ public class Transaction {
 	@FormParam("transactionAmount")
 	double transactionAmount;
 
+	Checkout Checkout;
+	
+	@OneToOne(mappedBy="transaction")
+	@XmlTransient
+	public Checkout getCheckout() {
+		return Checkout;
+	}
+
+	public void setCheckout(Checkout checkout) {
+		this.Checkout = checkout;
+	}
+	
 	@Id												    // Marking the property as primary key for the table 
 	@Column(name="transactionID")							// using column to provide the default column name
 	@GeneratedValue(strategy=GenerationType.AUTO)
