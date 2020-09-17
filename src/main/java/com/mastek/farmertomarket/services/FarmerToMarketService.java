@@ -184,24 +184,88 @@ public Farmer findFarmerID(int farmerID) {
 	return farmDAO.findById(farmerID).get();
 }
 @Transactional
-public Customer assignCustomerToCheckout(int checkoutID, int customerID) {
+	public Checkout assignCheckoutToCustomers(int checkoutID, int customerID) {
 	// TODO Auto-generated method stub
 	
 	Checkout check = checkDAO.findById(checkoutID).get();
 	Customer cust = custDAO.findById(customerID).get();
 	
-	check.setCustomer(cust);
-	cust.setCheckout(check);
+		check.setCurrentCustomer(cust);
+		cust.getCustomerCheckouts().add(check);
 	
-	check = checkDAO.save(check);
-	cust = custDAO.save(cust);
+		// check = checkDAO.save(check);
+		// cust = custDAO.save(cust);
 	
-	return cust;
+		return check;
+	}
+
+	@Transactional
+	public Transaction assignTransactionToCheckout(int transactionID, int checkoutID) {
 	
+		Transaction tran = tranDAO.findById(transactionID).get();
+		Checkout check = checkDAO.findById(checkoutID).get();
 	
+		tran.setCheckout(check);
+		check.setTransaction(tran);
 	
-}
+		tran = tranDAO.save(tran);
+		check = checkDAO.save(check);
+
+		return tran;
+
+	}
+
+	@Transactional
+	public Basket assignBasketsToItems(int basketID, int itemID) {
+
+		Basket bask = baskDAO.findById(basketID).get();
+		Item it = itemDAO.findById(itemID).get();
+
+		bask.getItemsAssigned().add(it);
+		baskDAO.save(bask);
+
+		return bask;
+
+	}
+
+	@Transactional
+	public Customer assignCustomersToItems(int customerID, int itemID) {
+
+		Customer cust = custDAO.findById(customerID).get();
+		Item it = itemDAO.findById(itemID).get();
+
+		cust.getItemsAssignedToCustomers().add(it);
+		custDAO.save(cust);
+		return cust;
+	}
 
 
+	@Transactional
+	public Farmer assignFarmersToProducts(int farmerID, int productID) {
+
+		Farmer farm = farmDAO.findById(farmerID).get();
+		Product prod = prodDAO.findById(productID).get();
+
+		farm.getProductsAssigned().add(prod);
+		farmDAO.save(farm);
+
+		return farm;
+
+	}
+
+	@Transactional
+	public Product assignProductToItem(int productID, int itemID) {
+
+		Product prod = prodDAO.findById(productID).get();
+		Item it = itemDAO.findById(itemID).get();
+
+		prod.setItem(it);
+		it.setProduct(prod);
+
+		prod = prodDAO.save(prod);
+		it = itemDAO.save(it);
+
+		return prod;
+
+	}
 }
-						 

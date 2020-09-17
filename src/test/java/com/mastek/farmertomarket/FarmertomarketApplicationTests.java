@@ -13,6 +13,7 @@ import com.mastek.farmertomarket.dao.FarmerJPADAO;
 import com.mastek.farmertomarket.dao.ItemJPADAO;
 import com.mastek.farmertomarket.dao.ProductJPADAO;
 import com.mastek.farmertomarket.dao.TransactionJPADAO;
+import com.mastek.farmertomarket.entities.Basket;
 import com.mastek.farmertomarket.entities.Checkout;
 import com.mastek.farmertomarket.entities.Customer;
 import com.mastek.farmertomarket.entities.FarmType;
@@ -52,6 +53,7 @@ class FarmertomarketApplicationTests {
 	
 	@Autowired
 	FarmerToMarketService ftomSvc;
+	
 	
 	@Test
 	void testCheckoutDAOAdd() {
@@ -122,26 +124,61 @@ class FarmertomarketApplicationTests {
 	}
 	
 	@Test
-	void testAssignCheckoutToCustomer() {
-		 ftomSvc.assignCustomerToCheckout(3, 5);
-		//assertNotNull(cust.getCurrentCheckout(), "Checkout Not Assigned");
+	void testAssignCheckoutToCustomers() {
+		 Checkout check = ftomSvc.assignCheckoutToCustomers(3, 5);
+		 
+		assertNotNull(check.getCurrentCustomer(), "Checkout Not Assigned");
 		
 		 
 		System.out.println("Checkout assigned to customer");
 	}
-//	@Test
-//	void testAssignEmployeeToDepartment() {
-//						// empSVC.assingEmployeeToDepartment(empno,deptno)
-//			Employee emp = empSvc.assignEmployeeToDepartment(6,12);
-//			assertNotNull(emp.getCurrentDepartment(),"Department Not Assigned");
-//	}
-//	
-//	
-//	@Test
-//	void testAssignEmployeeToProject() {		// empno,projectId
-//		Employee emp =  empSvc.assignEmployeeToProject(4,19);
-//		assertTrue(emp.getProjectsAssigned().size()>0,"Projects assigned");	
-//	}
+	
+	@Test
+	void testAssignTransactionToCheckout() {
+
+		Transaction tran = ftomSvc.assignTransactionToCheckout(4, 3);
+		assertNotNull(tran.getTransactionID(), "Transaction Not Assigned");
+
+		System.out.println("Transaction assigned to checkout");
 	}
-	
-	
+
+	@Test
+	void testAssignBasketsToItems() {
+
+		Basket bask = ftomSvc.assignBasketsToItems(10, 6);
+
+		assertNotNull(bask.getItemsAssigned(), "Basket Not Assigned");
+
+		System.out.println("Basket assigned to items");
+	}
+
+	@Test
+	void testAssignCustomersToItems() {
+
+		Customer cust = ftomSvc.assignCustomersToItems(11, 12);
+
+		assertNotNull(cust.getItemsAssignedToCustomers(), "Customer  Not Assigned");
+
+		System.out.println("Customer assigned to items");
+	}
+
+	@Test
+	void testAssignFarmersToProducts() {
+
+		Farmer farm = ftomSvc.assignFarmersToProducts(2, 7);
+
+		assertNotNull(farm.getProductsAssigned(), "Farmer  Not Assigned");
+
+		System.out.println("Farmer assigned to Products");
+	}
+
+	@Test
+	void testAssignProductToItem() {
+
+		Product prod = ftomSvc.assignProductToItem(1, 6);
+
+		assertNotNull(prod.getItem(), "Product  Not Assigned");
+
+	}
+
+}

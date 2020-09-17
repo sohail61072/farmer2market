@@ -1,9 +1,5 @@
 package com.mastek.farmertomarket.entities;
 
-import java.util.HashSet;
-import java.util.Set;
-
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -11,12 +7,14 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.ws.rs.FormParam;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
+
+import org.springframework.data.annotation.Transient;
 
 @XmlRootElement
 @Entity 												// declares the class as entity, to be managed by JPA
@@ -31,22 +29,21 @@ public class Checkout {
 	
 	@FormParam("totalCost")
 	double totalCost;
-	
-	Set<Customer> team = new HashSet<>();
-	
-	// associates the many entity using collection with cascade enabled
-	// specify in mappedBy the @JoinColumn config property name
-	
-	@OneToMany(mappedBy="currentCheckout", cascade=CascadeType.ALL)
-	@XmlTransient
-	public Set<Customer> getTeam() {
-		return team;
+
+	Customer currentCustomer;
+
+	@ManyToOne // one customer can have multiple checkouts
+	@JoinColumn(name = "fk_customerID") // the foreign key column to store the associate checkoutID
+	@Transient // ignore this property when storing employee data in MongoDB
+	@XmlTransient // ignore the association property when shared via Service
+	public Customer getCurrentCustomer() {
+		return currentCustomer;
 	}
 
-	public void setTeam(Set<Customer> team) {
-		this.team = team;
+	public void setCurrentCustomer(Customer currentCustomer) {
+		this.currentCustomer = currentCustomer;
 	}
-	
+
 	Transaction Transaction;
 	
 	@OneToOne(fetch=FetchType.EAGER)
@@ -94,12 +91,6 @@ public class Checkout {
 	public String toString() {
 		return "checkout [checkoutID=" + checkoutID + ", deliveryDate=" + deliveryDate + ", totalCost=" + totalCost
 				+ "]";
-	}
-
-	public Customer setCustomer(Customer cust) {
-		// TODO Auto-generated method stub
-		
-	return cust;
 	}
 
 	

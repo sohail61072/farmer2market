@@ -1,18 +1,20 @@
 package com.mastek.farmertomarket.entities;
 
+import java.util.HashSet;
+import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.ws.rs.FormParam;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
-
-import org.springframework.data.annotation.Transient;
 
 @XmlRootElement
 @Entity 												// declares the class as entity, to be managed by JPA
@@ -46,28 +48,39 @@ public class Customer {
 	@FormParam("customerPassword")
 	String customerPassword;
 
-	Checkout currentCheckout;
-	
-	
-	@ManyToOne //one customer can have multiple checkouts 
-	@JoinColumn(name="fk_checkoutID")  //the foreign key column to store the associate checkoutID
-	@Transient // ignore this property when storing employee data in MongoDB
+	Set<Checkout> customerCheckouts = new HashSet<>();
+
+	@OneToMany(mappedBy = "currentCustomer", cascade = CascadeType.ALL)
+	@XmlTransient
+	public Set<Checkout> getCustomerCheckouts() {
+		return customerCheckouts;
+	}
+
+	public void setCustomerCheckouts(Set<Checkout> customerCheckouts) {
+		this.customerCheckouts = customerCheckouts;
+	}
+
+	Set<Item> itemsAssignedToCustomers = new HashSet<>();
+
+	// provide the property in Item with @ManyToMany and @JoinTable configurations
+	@ManyToMany(mappedBy = "customerItems")
+	@XmlTransient
+	public Set<Item> getItemsAssignedToCustomers() {
+		return itemsAssignedToCustomers;
+	}
+
+	public void setItemsAssignedToCustomers(Set<Item> itemsAssignedToCustomers) {
+		this.itemsAssignedToCustomers = itemsAssignedToCustomers;
+	}
+	// @Transient // ignore this property when storing employee data in MongoDB
 	@XmlTransient // ignore the association property when shared via Service
-	
-	public Checkout getCurrentCheckout() {
-		return currentCheckout;
-	}
-
-	public void setCurrentCheckout(Checkout currentCheckout) {
-		this.currentCheckout = currentCheckout;
-	}
-
 	@Id												    // Marking the property as primary key for the table 
 	@Column(name="customerID")							// using column to provide the default column name
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	public int getCustomerID() {
 		return customerID;
 	}
+
 
 	public void setCustomerID(int customerID) {
 		this.customerID = customerID;

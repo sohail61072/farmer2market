@@ -3,6 +3,7 @@ package com.mastek.farmertomarket.entities;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -10,6 +11,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -47,9 +49,25 @@ public class Item {
 	public void setBasketItems(Set<Basket> basketItems) {
 		this.basketItems = basketItems;
 	}
-	
+
+	Set<Item> customerItems = new HashSet<>();
+
+	@ManyToMany(cascade = CascadeType.ALL) // configure many to many association for entities
+	@JoinTable(name = "ftom_Customer_Items", // provide the join table name
+			joinColumns = { @JoinColumn(name = "fk_itemID") }, inverseJoinColumns = {
+					@JoinColumn(name = "fk_customerId") }) // foreign key column for collection type
+	public Set<Item> getCustomerItems() {
+		return customerItems;
+	}
+
+	public void setCustomerItems(Set<Item> customerItems) {
+		this.customerItems = customerItems;
+	}
+
 	Product Product;
 	
+
+
 	@OneToOne(fetch=FetchType.EAGER)
 	@XmlTransient
 	@JoinColumn(name="productID")
