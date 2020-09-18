@@ -103,7 +103,10 @@ public Item finditemID(int itemID) {
 	return itemDAO.findById(itemID).get();
 }
 
-@Override
+//
+
+
+	@Override
 public Item registerNewItem(Item newItem) {
 	newItem = itemDAO.save(newItem);
 	return newItem;
@@ -114,7 +117,7 @@ public Item registerNewItem(Item newItem) {
 
 @Override
 public Iterable<Customer> listAllCustomers() {
-	// TODO Auto-generated method stub
+
 	return custDAO.findAll();
 }
 
@@ -228,15 +231,24 @@ public Farmer findFarmerID(int farmerID) {
 
 	}
 
+	// @Override
+	// @Transactional
+//	public Iterable<Item> findByName(String itemName) {
+//		Iterable<Item> list = itemDAO.findByItemName(itemName);
+//		return list;
+//	}
+
 	@Transactional
-	public Customer assignCustomersToItems(int customerID, int itemID) {
+	public Item assignItemsToCustomers(int itemID, int customerID) {
 
-		Customer cust = custDAO.findById(customerID).get();
 		Item it = itemDAO.findById(itemID).get();
+		Customer cust = custDAO.findById(customerID).get();
 
-		cust.getItemsAssignedToCustomers().add(it);
-		custDAO.save(cust);
-		return cust;
+		it.getCustomersAssigned().add(cust);
+		itemDAO.save(it);
+
+		return it;
+
 	}
 
 
@@ -268,4 +280,7 @@ public Farmer findFarmerID(int farmerID) {
 		return prod;
 
 	}
+
+
+
 }

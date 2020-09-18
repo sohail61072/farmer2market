@@ -19,9 +19,15 @@ import javax.ws.rs.FormParam;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
+import org.springframework.data.annotation.Transient;
+
 @XmlRootElement
 @Entity 												// declares the class as entity, to be managed by JPA
 @Table(name="ftom_item")
+//@NamedQueries({ @NamedQuery(name = "Item.findName", query = "select n from Item n where n.name=:name")
+//	@NamedQuery(name="VisaDetails.findLastEntryByEmail",
+//				query="select e from VisaDetails e where e.email=:email")
+//})
 public class Item {
 	
 		
@@ -50,22 +56,23 @@ public class Item {
 		this.basketItems = basketItems;
 	}
 
-	Set<Item> customerItems = new HashSet<>();
-
+	Set<Customer> customersAssigned = new HashSet<>();
+	// provide the property in Item with @ManyToMany and @JoinTable configurations
 	@ManyToMany(cascade = CascadeType.ALL) // configure many to many association for entities
-	@JoinTable(name = "ftom_Customer_Items", // provide the join table name
-			joinColumns = { @JoinColumn(name = "fk_itemID") }, inverseJoinColumns = {
-					@JoinColumn(name = "fk_customerId") }) // foreign key column for collection type
-	public Set<Item> getCustomerItems() {
-		return customerItems;
+	@JoinTable(name = "ftom_Items_Customers", // provide the join table name
+			joinColumns = { @JoinColumn(name = "fk_customerID") }, inverseJoinColumns = {
+					@JoinColumn(name = "fk_itemID") }) // foreign key column for collection type
+	@Transient
+	@XmlTransient
+	public Set<Customer> getCustomersAssigned() {
+		return customersAssigned;
 	}
 
-	public void setCustomerItems(Set<Item> customerItems) {
-		this.customerItems = customerItems;
+	public void setCustomersAssigned(Set<Customer> customersAssigned) {
+		this.customersAssigned = customersAssigned;
 	}
 
 	Product Product;
-	
 
 
 	@OneToOne(fetch=FetchType.EAGER)

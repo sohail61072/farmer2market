@@ -60,20 +60,17 @@ public class Customer {
 		this.customerCheckouts = customerCheckouts;
 	}
 
-	Set<Item> itemsAssignedToCustomers = new HashSet<>();
+	Set<Item> ItemsCustomers = new HashSet<>();
 
-	// provide the property in Item with @ManyToMany and @JoinTable configurations
-	@ManyToMany(mappedBy = "customerItems")
+	@ManyToMany(mappedBy = "customersAssigned")
 	@XmlTransient
-	public Set<Item> getItemsAssignedToCustomers() {
-		return itemsAssignedToCustomers;
+	public Set<Item> getItemsCustomers() {
+		return ItemsCustomers;
 	}
 
-	public void setItemsAssignedToCustomers(Set<Item> itemsAssignedToCustomers) {
-		this.itemsAssignedToCustomers = itemsAssignedToCustomers;
+	public void setItemsCustomers(Set<Item> itemsCustomers) {
+		ItemsCustomers = itemsCustomers;
 	}
-	// @Transient // ignore this property when storing employee data in MongoDB
-	@XmlTransient // ignore the association property when shared via Service
 	@Id												    // Marking the property as primary key for the table 
 	@Column(name="customerID")							// using column to provide the default column name
 	@GeneratedValue(strategy=GenerationType.AUTO)

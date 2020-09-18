@@ -34,8 +34,7 @@ public class Basket {
 	int basketAmount;
 	
 	Set<Item> itemsAssigned = new HashSet<>();
-	
-	
+
 	
 	@ManyToMany(cascade=CascadeType.ALL) // configure many to many association for entities
 	@JoinTable(name="ftom_Basket_Items",  // provide the join table name

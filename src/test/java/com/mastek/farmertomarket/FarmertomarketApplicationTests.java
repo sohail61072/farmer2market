@@ -63,7 +63,14 @@ class FarmertomarketApplicationTests {
 		
 		check = checkDAO.save(check);
 	}
-	
+	@Test
+	void testBasketDAOAdd() {
+		Basket bask = new Basket();
+		bask.setBasketAmount(25);
+
+		bask = baskDAO.save(bask);
+	}
+
 	@Test
 	void testCustomerDAOAdd() {
 		Customer cust = new Customer();
@@ -153,12 +160,11 @@ class FarmertomarketApplicationTests {
 	}
 
 	@Test
-	void testAssignCustomersToItems() {
+	void testAssignItemsToCustomers() {
 
-		Customer cust = ftomSvc.assignCustomersToItems(11, 12);
+		Item it = ftomSvc.assignItemsToCustomers(6, 5);
 
-		assertNotNull(cust.getItemsAssignedToCustomers(), "Customer  Not Assigned");
-
+		assertNotNull(it.getCustomersAssigned(), "Customer  Not Assigned");
 		System.out.println("Customer assigned to items");
 	}
 
