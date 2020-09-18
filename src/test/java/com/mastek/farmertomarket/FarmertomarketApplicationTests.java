@@ -187,4 +187,90 @@ class FarmertomarketApplicationTests {
 
 	}
 
+	@Test
+	void testUpdateItemDAO() {
+		Item it = itemDAO.findById(104).get();
+		System.out.println("Item Details Fetched");
+		it.setItemName("Pears");
+		it.setItemPrice(0.33);
+		it.setItemQuantity(50);
+
+		System.out.println("Item Details Updated.");
+
+		it = itemDAO.save(it);
+
+	}
+
+	@Test
+	void testUpdateFarmerDAO() {
+		Farmer farm = farmDAO.findById(8).get();
+		System.out.println("Farmer Details Fetched");
+		farm.setFarmName("Silversage Acres");
+		farm.setFarmerForename("Hermione");
+		farm.setFarmerSurname("Granger");
+		farm.setFarmLocation("Lancashire");
+		farm.setFarmerUsername("SAcresFarm12");
+		farm.setFarmerPassword("SAcres111");
+
+		System.out.println("Farm information updated");
+
+		farm = farmDAO.save(farm);
+	}
+
+	@Test
+	void testUpdateProductDAO() {
+		Product prod = prodDAO.findById(7).get();
+		System.out.println("Product Details Fetched");
+		prod.setProductName("Apples");
+		prod.setProductDescription("Granny Smith, green apples!");
+		prod.setProductType(ProductType.FRUIT);
+		prod.setProductPrice(0.35);
+		prod.setProductQuantity(10);
+		prod.setProductWeightKG(2);
+
+		System.out.println("Product Details Updated");
+
+		prod = prodDAO.save(prod);
+}
+
+	@Test
+	void testUpdateTransactionDAO() {
+		Transaction tran = tranDAO.findById(10).get();
+		System.out.println("Transaction Details Fetched");
+
+		tran.setTransactionDate("11/09/2020");
+		tran.setTransactionAmount(55.55);
+
+		System.out.println("Transaction Details Updated.");
+		tran = tranDAO.save(tran);
+	}
+
+	@Test
+	void testUpdateCustomerDAO() {
+		Customer cust = custDAO.findById(11).get();
+		System.out.println("Customer Details Fetched");
+		cust.setCustomerAddress("25 Wellington Street, Dewsbury, WF131HF");
+		cust.setCustomerBalance(25.00);
+		cust.setCustomerUsername("DAdams91");
+		cust.setCustomerForename("Daisy");
+		cust.setCustomerSurname("Adams");
+		cust.setCustomerDOB("11/11/1991");
+
+		System.out.println("Customers forename, surname and DOB updated.");
+		cust = custDAO.save(cust);
+	}
+
+	@Test
+	void testUpdateCheckoutDAO() {
+		Checkout check = checkDAO.findById(94).get();
+		System.out.println("Checkout Details Fetched");
+		check.setDeliveryDate("19/09/2020");
+		check.setTotalCost(20.00);
+
+		System.out.println("Checkout details updated.");
+
+		check = checkDAO.save(check);
+
+	}
+
 }
