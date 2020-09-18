@@ -30,6 +30,13 @@ public interface ItemAPI {
 	@Consumes(MediaType.APPLICATION_FORM_URLENCODED)
 	@Produces(MediaType.APPLICATION_JSON)
 	public Item registerNewItem(@BeanParam Item newItem);
+
+//	@GET // http Method: GET to receive data in requests
+//	@Path("/item/findByName/{itemName}") // URL path to access this VisaDetails List
+//	@Produces({ MediaType.APPLICATION_JSON }) // formats the media type to which the method supports OUTPUT
+//	public Item findByName(@PathParam("itemName") String itemName);
+
+
 }
 
 
