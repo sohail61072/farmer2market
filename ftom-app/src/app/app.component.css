@@ -1,6 +1,6 @@
 .login-page{
     background-color: #7dc9e2;
-
+ background-image: url(D:\Training\repo\farmer2market\ftom-app\src\assets\images\background.jpg);
 }
 .heading{
     text-align: center;
@@ -8,8 +8,20 @@
 body {
     font: 13px/20px "Lucida Grande", Tahoma, Verdana, sans-serif;
     color: green;
-    background: lightblue;
+    background: none;
     background-size: 300%;
+   
+  }
+  .row {
+    display: flex;
+  }
+  
+  .column {
+    flex: 33.33%;
+    padding: 0px;
+  }
+  .row{
+    border-style: solid 2px white;
   }
   
   .login {
