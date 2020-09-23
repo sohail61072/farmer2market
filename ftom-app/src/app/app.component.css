@@ -1,10 +1,15 @@
+.login-page{
+    background-color: #7dc9e2;
+
+}
+.heading{
+    text-align: center;
+}
 body {
-    margin-top: 20px;
-    margin-bottom: 20px;
     font: 13px/20px "Lucida Grande", Tahoma, Verdana, sans-serif;
     color: green;
     background: lightblue;
-    background-size: 100%;
+    background-size: 300%;
   }
   
   .login {
@@ -12,11 +17,16 @@ body {
     margin: 30px auto;
     padding: 20px 20px 20px;
     width: 310px;
-    background: white;
-    border-radius: 3px;
+    background: silver;
+
     -webkit-box-shadow: 0 0 200px rgba(255, 255, 255, 0.5), 0 1px 2px rgba(0, 0, 0, 0.3);
     box-shadow: 0 0 200px rgba(255, 255, 255, 0.5), 0 1px 2px rgba(0, 0, 0, 0.3);
   }
+  .imagelogin{
+      size: 50%;
+  }
+      
+
   
   .login:before {
     content: '';
