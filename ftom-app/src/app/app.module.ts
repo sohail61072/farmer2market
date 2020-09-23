@@ -10,6 +10,8 @@ import { FarmerComponent } from './farmer/farmer.component';
 import { ItemComponent } from './item/item.component';
 import { ProductComponent } from './product/product.component';
 import { TransactionComponent } from './transaction/transaction.component';
+import { HttpClientModule } from '@angular/common/http'
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,9 @@ import { TransactionComponent } from './transaction/transaction.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
