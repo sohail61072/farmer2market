@@ -1,7 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
-import { AppRoutingModule } from './app-routing.module';
+import { AppRoutingModule, routingComponents } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BasketComponent } from './basket/basket.component';
 import { CheckoutComponent } from './checkout/checkout.component';
@@ -20,11 +22,14 @@ import { TransactionComponent } from './transaction/transaction.component';
     FarmerComponent,
     ItemComponent,
     ProductComponent,
-    TransactionComponent
+    TransactionComponent,
+    routingComponents
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

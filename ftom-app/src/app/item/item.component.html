@@ -1,1 +1,17 @@
-<p>item works!</p>
+<h1 style="margin:30px;" >Current Products In Stock</h1>
+<table  class="table">
+  <tr>
+    <th scope="col">Product Image</th>
+    <th scope="col">Name</th>
+    <th scope="col">Price</th>
+    <th scope="col">Quantity</th>
+  </tr>
+
+  <tr class="item" *ngFor="let it of Item; let i = index">
+    <td>{{it.itemId}}</td>
+    <td>{{it.itemName}}</td>
+    
+    <td>£{{it.itemPrice}}</td>
+    <td>{{it.itemQuantity}}</td>
+  </tr>
+</table>
