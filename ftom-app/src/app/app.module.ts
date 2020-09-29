@@ -11,6 +11,7 @@ import { FarmerComponent } from './farmer/farmer.component';
 import { ItemComponent } from './item/item.component';
 import { ProductComponent } from './product/product.component';
 import { TransactionComponent } from './transaction/transaction.component';
+import { HomePageComponent } from './home-page/home-page.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { TransactionComponent } from './transaction/transaction.component';
     ItemComponent,
     ProductComponent,
     TransactionComponent,
-    routingComponents
+    routingComponents,
+    HomePageComponent
   ],
   imports: [
     BrowserModule,
