@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from "@angular/router";
+// import { FormsModule } from '@angular/forms';
 
 
 @Component({
@@ -8,8 +9,6 @@ import {Router} from "@angular/router";
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-
-  
     username: string;
     password: string;
     errorMessage:String
@@ -29,11 +28,11 @@ export class LoginComponent implements OnInit {
       }
     
     else if  (this.username == 'customer' && this.password == 'customer') {
-    this.router.navigate(['customer']);
+    this.router.navigate(['item']);
     }
-    else if(this.username == 'farmer' && this.password == 'farmer') {
-      this.router.navigate(['farmer']);
-      }
+    // else if(this.username == 'farmer' && this.password == 'farmer') {
+    //   this.router.navigate(['farmer']);
+      // }
     else if(this.username == 'admin' && this.password == 'admin'){
       this.router.navigate(['registered-users'])
     }

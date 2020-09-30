@@ -16,6 +16,7 @@ const routes: Routes = [
   {path: "checkout", component:CheckoutComponent},
   {path: "item", component:ItemComponent},
   {path: "basket", component:BasketComponent},
+  {path: "login", component:LoginComponent}
   
   // 
 
