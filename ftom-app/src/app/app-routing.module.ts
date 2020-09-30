@@ -1,7 +1,5 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { from } from 'rxjs';
-import { AppComponent } from './app.component';
 import { BasketComponent } from './basket/basket.component';
 import { pathToFileURL } from 'url';
 import { CheckoutComponent } from './checkout/checkout.component';
