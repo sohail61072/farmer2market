@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Item } from '../item';
 import { ItemService} from '../item.service';
 import { from } from 'rxjs';
+import { Basket } from '../Basket';
+import { BasketService } from '../basket.service';
+
 
 
 @Component({
@@ -12,19 +15,34 @@ import { from } from 'rxjs';
 export class ItemComponent implements OnInit {
   
   items:Item[]
+  baskets:Basket[]
+  newItems:Item[]
 
-  constructor(private itemService:ItemService) { }
+  constructor(private itemService:ItemService, private basketService: BasketService) { 
 
-  ngOnInit() {
-
-    this.itemService.getItem()
-    .subscribe(
-      res =>{ this.items= res}
-    
-      
-  
-)  
+    this.items=[]
+    this.baskets=[]
   }
 
 
-}
+addItemToBasket(productId:number, basketID:number, newItems:Item){
+ 
+this.itemService.addItem(newItems).subscribe(
+ res => 
+ { newItems =res
+   this.itemService.addItemToBasket(basketID, newItems.itemID).subscribe(
+    
+         res => 
+         {this.items = res}
+         )
+        })}
+      
+
+        ngOnInit() {
+          this.itemService.getItem().subscribe(
+          res =>{this.items=res} 
+        )}
+          }
+
+      
+  

@@ -1,5 +1,7 @@
 package com.mastek.farmertomarket.apis;
 
+import java.util.Set;
+
 import javax.ws.rs.BeanParam;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
@@ -10,6 +12,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
 import com.mastek.farmertomarket.entities.Basket;
+import com.mastek.farmertomarket.entities.Item;
 
 @Path("/farmertomarket/")
 public interface BasketAPI {
@@ -30,7 +33,9 @@ public interface BasketAPI {
 	@Produces(MediaType.APPLICATION_JSON)
 	public Basket registerNewBasket(@BeanParam Basket newBasket);
 	
-	
-	
+	@GET
+	@Path("/basket/basketItems/{basketID}")
+	@Produces({MediaType.APPLICATION_JSON})
+	public Set<Item> getBasketItems(@PathParam("basketID") int basketID);
 	
 }

@@ -1,5 +1,7 @@
 package com.mastek.farmertomarket.services;
 
+import java.util.Set;
+
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,7 +33,8 @@ import com.mastek.farmertomarket.entities.Transaction;
 
 @Component									 // marking class as bean to be created
 @Scope("singleton")	// singleton: One object used across test cases, prototype: one object per request
-public class FarmerToMarketService implements BasketAPI, CheckoutAPI, CustomerAPI, FarmerAPI, ItemAPI, ProductAPI, TransactionAPI{
+public class FarmerToMarketService
+		implements BasketAPI, CheckoutAPI, CustomerAPI, FarmerAPI, ItemAPI, ProductAPI, TransactionAPI {
 
 @Autowired
 BasketJPADAO baskDAO;
@@ -281,6 +284,16 @@ public Farmer findFarmerID(int farmerID) {
 
 	}
 
+	@Override
+	@Transactional
+	public Set <Item> getBasketItems(int basketID) {
+		Basket currentBask = baskDAO.findById(basketID).get();
+		int count = currentBask.getItemsAssigned().size();
+		System.out.println("Basket found: " + currentBask.getBasketID() + " Items in Basket = " + count);
+
+		Set<Item> Item = currentBask.getItemsAssigned();
+		return Item;
+	}
 
 
 }
