@@ -1,1 +1,28 @@
-<p>customer works!</p>
+<h1>Customer Profile</h1>
+<table class="table">
+    <th scope="col">Customer ID</th>
+    <th scope="col">Username</th>
+    <th scope="col">Password</th>
+    <th scope="col">Firstname</th>
+    <th scope="col">Surname</th>
+    <th scope="col">Date of Birth</th>
+    <th scope="col">Address</th>
+
+  
+  
+    <tr *ngFor="let cu of customers; let i = index">
+      <td>{{cu.customerID}}</td>
+      <td>{{cu.customerUsername}}</td>
+      <td>{{cu.customerPassword}}</td>
+      <td>{{cu.customerFirstname}}</td>
+      <td>{{cu.customerSurname}}</td>
+      <td>{{cu.customerDOB}}</td>
+      <td>{{cu.customerAddress}}</td>
+    </tr>
+  </table>
+  
+  <br><br><br><br><br><br><br><br><br>
+  
+  <button routerLink="/customer" class="customer">Go Back</button>
+  
+  <br><br><br>

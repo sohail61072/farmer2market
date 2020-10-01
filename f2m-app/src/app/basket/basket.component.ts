@@ -28,8 +28,8 @@ export class BasketComponent implements OnInit {
     this.items=[]
     this.basketItems=[]
   }
-  addItemToBasket(basketId:number, itemId: number) {
-    this.itemService.addItemToBasket(basketId, itemId).subscribe(
+  addItemToBasket(basketID:number, itemID: number) {
+    this.itemService.addItemToBasket(basketID, itemID,  ).subscribe(
       res=> {
         this.items = res
         res => {this.baskets = res}

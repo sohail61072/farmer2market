@@ -32,16 +32,17 @@ getItem():Observable<Item[]>{
   }
   
 
-addItem(newItems: Item): Observable<Item> {
-  const httpOpts = {
+ addItem(newItems: Item): Observable<Item> {
+   const httpOpts = {
     headers: new HttpHeaders(
       {'Content-Type':
     'application/x-www-form-urlencoded;charset=UTF-8'})
-  }
-  var reqBody =
+   }
+ var reqBody =
   "quantity=" + newItems.selectedQuantity + "&price=" + newItems.itemPrice
 
-  return this.httpsvc.post<Item>(
+   return this.httpsvc.post<Item>(
     this.rootURL + "/register", reqBody, httpOpts)
   
-}}
+ }
+}

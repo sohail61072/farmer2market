@@ -25,18 +25,19 @@ export class ItemComponent implements OnInit {
   }
 
 
-addItemToBasket(productId:number, basketID:number, newItems:Item){
+addItemToBasket(productId:number, basketID:number, newItem:Item){
  
-this.itemService.addItem(newItems).subscribe(
+this.itemService.addItem(newItem).subscribe(
  res => 
- { newItems =res
-   this.itemService.addItemToBasket(basketID, newItems.itemID).subscribe(
+ { newItem =res
+   this.itemService.addItemToBasket(basketID, newItem.itemID).subscribe(
     
          res => 
          {this.items = res}
          )
         })}
       
+
 
         ngOnInit() {
           this.itemService.getItem().subscribe(
