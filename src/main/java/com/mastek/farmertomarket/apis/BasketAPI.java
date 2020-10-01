@@ -4,6 +4,7 @@ import java.util.Set;
 
 import javax.ws.rs.BeanParam;
 import javax.ws.rs.Consumes;
+import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
@@ -38,4 +39,11 @@ public interface BasketAPI {
 	@Produces({MediaType.APPLICATION_JSON})
 	public Set<Item> getBasketItems(@PathParam("basketID") int basketID);
 	
+	@POST // http method Post used to send data in requests
+	@Path("/basket/basketItems/register")
+	@Consumes(MediaType.APPLICATION_FORM_URLENCODED)
+	@Produces(MediaType.APPLICATION_JSON)
+	Basket assignBasketsToItems(@FormParam("basketID") int basketID, @FormParam("itemID") int itemID);
+
 }
+

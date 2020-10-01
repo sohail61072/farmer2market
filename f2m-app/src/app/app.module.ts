@@ -10,6 +10,7 @@ import { ItemComponent } from './item/item.component';
 import { BasketComponent } from './basket/basket.component';
 import { from } from 'rxjs';
 import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { LoginComponent } from './login/login.component';
     CheckoutComponent,
     BasketComponent,
     ItemComponent,
-    LoginComponent
+    LoginComponent,
+    RegisterComponent
 
 
   ],

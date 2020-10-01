@@ -1,0 +1,22 @@
+<h1 class="heading">Welcome to Farmer to Market</h1>
+  <body>
+    
+ <div class="register">
+     <h1>Register</h1>
+  <form  >
+    <p><input type="text" name="customerForename" value="" placeholder="firstname" [(ngModel)]="customerFirstname" required></p>
+    <p><input type="text" name="customerSurname" value="" placeholder="surname" [(ngModel)]="customerSurname"></p>
+    <p><input type="text" name="customerAddress" value="" placeholder="address" [(ngModel)]="customerAddress"></p>
+    <p><input type="text" name="customerBalance" value="" placeholder="balance" [(ngModel)]="customerBalance"></p>
+    <p><input type="text" name="customerDOB" value="" placeholder="DOB" [(ngModel)]="customerDOB"></p>
+    <p><input type="text" name="customerUsername" value="" placeholder="Username or Email" [(ngModel)]="customerUsername"></p>
+    <p><input type="password" name="custpmerPassword" value="" placeholder="Password"[(ngModel)]="customerPassword"></p>
+   
+   
+    </form>
+    <button class="btn btn-success" style="background-color: rgb(0, 105, 5);" (click)="register()" >Login</button>
+
+
+  
+</div>
+</body>
