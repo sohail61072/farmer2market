@@ -10,23 +10,7 @@
 
 
 }
-.home-page-image{
-    border: 0.5mm solid black;
-    align-self: center;
-    place-content: inherit
 
-} 
-.image{
-   
-    size: 100%;
-    
- }
-.edit-button{
-    padding-top: 2mm;
-}
- .page-bottom{
-     size: 100%;
- }
  ul{
      text-align: left;
      font-size: larger;
@@ -44,16 +28,8 @@
      font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
      font-weight: bold
  }
- th{
-     text-align: left;
-     font-size: large;
-     font-style: unset;
-     color: navy;
-     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    
- }
- body
- {
+
+ body{
      background-color: white;
      
  }
@@ -135,14 +111,14 @@ h2{
     color: black;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     font-size: x-large;
-    border: maroon solid 0.1mm
+   
 }
 .button{
     align-content: center;
     color: black;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     font-size: x-large;
-    border: maroon solid 0.1mm;
+  
 }
 
 .table{
@@ -150,7 +126,7 @@ h2{
     color: black;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     font-size: x-large;
-    border: maroon solid 0.1mm; 
+ 
 } 
 /* .register-button{
     

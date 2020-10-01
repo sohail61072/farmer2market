@@ -7,6 +7,7 @@ import { CheckoutComponent } from './checkout/checkout.component';
 import { CustomerComponent } from './customer/customer.component';
 import { ItemComponent } from './item/item.component';
 import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
 
 
 
@@ -16,7 +17,8 @@ const routes: Routes = [
   {path: "checkout", component:CheckoutComponent},
   {path: "item", component:ItemComponent},
   {path: "basket", component:BasketComponent},
-  {path: "login", component:LoginComponent}
+  {path: "login", component:LoginComponent},
+  {path: "register", component:RegisterComponent}
   
   // 
 

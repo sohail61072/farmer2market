@@ -1,0 +1,45 @@
+.form-group{
+    background-color: aliceblue;
+    color: blueviolet;
+    size: 5cm;
+    align-items: center;
+    font-size: large;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    size: 5cm;
+    align-self: center;
+}
+.col-md-6{
+    font-size: large;
+    margin-left: 9cm;
+    tab-size: 5cm;
+    size:5cm;
+    align-self: center;
+}
+.heading{
+    text-align: center;
+    font-size: xx-large;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    color: blue;
+    font-weight: bolder;
+}
+
+.register-heading{
+    text-align: center;
+    font-size: x-large;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    color: blue;
+    font-weight: bolder;
+}
+.btnSubmit{
+    color: blueviolet;
+    margin-left: 17cm;
+    border: 1cm;
+    border-color: blue;
+
+}
+.account-placeholder{
+    margin-left: 15cm;
+    text-align: center;
+    margin-top: 0;
+
+}

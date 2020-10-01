@@ -2,9 +2,9 @@
 <br>
 <br>
 
-<h1 style="margin:30px;" >Current Products In Stock</h1>
+<h1 class="heading" >Current Products In Stock</h1>
 <table  class="table">
-  <tr>
+  <tr class="item-table">
     <th scope="col">Product Image</th>
     <th scope="col">Name</th>
     <th scope="col">Price</th>
@@ -23,9 +23,9 @@
     <td>{{it.itemQuantity}}</td>
     <td> <input type="number" id="quantity" value="0" name="quantity" min="1" max="5"></td>
    
-    <button (click)="addItemToBasket(it.itemID,10, 
+    <button (click)="addItemToBasket(it.itemID, 10,
     {selectedQuantity:basketQuantity.value,price:pr.itemPrice})" 
-    style="background-color: rgb(0, 105, 5);">Add To Basket</button>
+    class="add-to-basket-button">Add To Basket</button>
 
   </tr>
 </table>

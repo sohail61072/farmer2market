@@ -1,0 +1,21 @@
+.heading{
+    text-align: center;
+    font-size: xx-large;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    color: blue;
+    font-weight: bolder;
+}
+.table{
+    align-self: center;
+    text-align: center;
+}
+.item-table{
+    text-align: center;
+}
+.add-to-basket-button{
+   background-color:  white;
+    border: 1cm;
+    border-color: blueviolet;
+
+    
+}
