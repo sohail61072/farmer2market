@@ -3,7 +3,7 @@ import { Basket } from '../Basket';
 import { BasketService } from '../basket.service';
 import { Item } from '../item';
 import { ItemService } from '../item.service';
-import { BasketItems } from '../item/basketItems';
+import { BasketItems } from '../basketItems';
 
 @Component({
   selector: 'app-basket',
@@ -51,5 +51,6 @@ export class BasketComponent implements OnInit {
     this.basketService.getBasket().subscribe(
       res =>{this.baskets=res} 
     )}
+
       }
 

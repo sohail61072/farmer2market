@@ -7,18 +7,25 @@
   <tr>
     
     <!-- <th scope="col">Name</th> -->
-    <th scope="col">Basket ID</th>
+    <!-- <th scope="col">Basket ID</th> -->
+    <th scope="col">Item ID</th>
+    <th scope="col">Item Name</th>
     <th scope="col">Quantity</th>
     <th scope="col">Total Cost</th>
    
     <tr class="baskets" *ngFor="let bask of baskets; let i = index">
+    <tr class="basketItems" *ngFor="let baskit of basketItems; let i = index">
    
-        <!-- <td>{{it.itemId}}</td> -->
+        
         <!-- <td> <img src="/assets/images/placeholder.jpg"  height=100>
         </td> -->
         
         <td>{{bask.basketID}}</td>
         
-        <td>{{bask.basketAmount}}</td>
+        <td>{{baskit.itemID}}</td>
+        <td>{{baskit.itemName}}</td> 
+        <td>{{baskit.itemQuantity}}</td> 
+        <td>{{baskit.itemPrice}}</td> 
+        <td></td>
         
             </tr>
